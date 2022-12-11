@@ -1,0 +1,75 @@
+from tkinter import * 
+import tkinter.messagebox
+from PIL import ImageTk, Image 
+
+root = Tk()
+root.title("A Coffee Lovers Dream")
+root.geometry("500x500")
+root.iconbitmap('c:/gui/favicon.ico')
+
+bg = PhotoImage(file="C:/GUI/mug.png") #adding background image
+my_label = Label(root,image = bg)
+my_label.place(x=0, y=0, relwidth=1, relheight =1) #setting the size
+
+def open():
+    top = Toplevel()
+    top.title('A Coffee Lovers Dream')
+    top.iconbitmap('c:/gui/favicon.ico')
+    top.geometry("500x500")
+    bg = PhotoImage(file="C:/GUI/mug.png") 
+    
+    my_label2 = Label(top, text="Welcome to Kat's Coffee",font='Helvetica 35').pack()
+    my_label3 = Label(top, text="Menu items:", font='Helvetica 25').pack()
+    label2=Label(top,text="Regular, Decaf, or Expresso",font='Helvetica 15').pack()
+    label5=Label(top,text="$2.00 Each",font='Helvetica 12').pack()
+    label3=Label(top,text="A Latte of your choice:",font='Helvetica 15').pack()
+    label4=Label(top, text="Flavors: Cinnamon, French Vanilla, Sugar free Vanilla, Carmel creme, Hazelnut, or Chai",font='Helvetica 12',bg='white', fg='black').pack()
+    label7=Label(top, text="$4.00 Each",font='Helvetica 12').pack()
+    Label5=Label(top, text="Seasonal offerings:",font='Helvetica 15').pack()
+    label6=Label(top, text="Peppermint Mocha, Eggnog Latte, Gingerbread Mocha, or a Toasted Marshmellow",font='Helvetica 12',bg='white', fg='black').pack()
+    label8=Label(top, text="$5.00 Each",font='Helvetica 12').pack()
+    
+    label9=Label(top, text="To continue, please fill the form below.",font='Helvetica 15 underline').pack()
+    
+    def name_submit():
+        print("Customer name is",format(e1.get()))
+    label11 = Label(top,text="Please enter your name:",font='Helvetica 10')
+    e1 = Entry(top,font='Helvetica 10')
+    button1 = Button(top, text="Submit", command=name_submit, font='Helvetica 10')
+
+    label11.pack()
+    e1.pack()
+    button1.pack()
+    
+    def phone_submit():
+        print('Customer phone number is',format(e2.get()))
+    label2 =Label(top, text="Please enter your phone number:",font='Helvetica 10')
+    e2 = Entry(top,font='Helvetica 10')
+    button2 = Button(top,text="Submit", command=phone_submit,font='Helvetica 10')
+
+    label2.pack()
+    e2.pack()
+    button2.pack()
+    
+    def order_submit():
+        print('Customer ordered',format(e3.get()))
+    label20 =Label(top, text="Please enter order:",font='Helvetica 10')
+    label22=Label(top,text="Be sure to seperate additional items with a comma.",font='Helvetica 8')
+    e3 = Entry(top,font='Helvetica 10')
+    button20 = Button(top,text="Submit", command=order_submit,font='Helvetica 10')
+
+    label20.pack()
+    label22.pack()
+    e3.pack()
+    button20.pack()
+    
+    def click():
+        tkinter.messagebox.showinfo("Order confirmed", "Thank you for chosing Kat's Coffee! Please see cashier.")
+    button25=Button(top, text="Send to Barista!",font='Helvetica 20',command=click)
+    button25.pack(side='bottom')
+
+    
+btn = Button(root, text="Click to start order",command=open, font=('Helvetica 25')).place(x=525, y=300)
+exit_Button = Button(root, text="Exit program", command=root.destroy, font=('Helvetica 20')).place(x=575, y=380)
+             
+mainloop()
